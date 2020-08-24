@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Almacenamiento"></activity>
-        <activity android:name=".Volumen" />
-        <activity android:name=".TransDatos" />
+        <activity android:name=".TransDatos"></activity>
         <activity android:name=".Tiempo" />
+        <activity android:name=".Almacenamiento" />
+        <activity android:name=".Volumen" />
         <activity android:name=".Longitud" />
         <activity android:name=".Masa" />
         <activity android:name=".Monedas" />
