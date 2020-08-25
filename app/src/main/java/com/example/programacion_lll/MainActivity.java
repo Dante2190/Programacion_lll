@@ -2,6 +2,7 @@ package com.example.programacion_lll;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -35,6 +36,16 @@ public class MainActivity extends AppCompatActivity  {
         vectormp[0] = MediaPlayer.create(this,R.raw.audio1);
         vectormp[1] = MediaPlayer.create(this,R.raw.audio2);
         vectormp[2] = MediaPlayer.create(this,R.raw.audio3);
+
+        Button buttonMo = (Button)findViewById(R.id.Btnbutton);
+
+        buttonMo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent netxM = new Intent(MainActivity.this,Multimedia3.class);
+                startActivity(netxM);
+            }
+        });
 
     }
     // Metodo para el botón PlayPause
