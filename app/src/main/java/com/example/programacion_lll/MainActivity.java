@@ -38,11 +38,20 @@ public class MainActivity extends AppCompatActivity  {
         vectormp[2] = MediaPlayer.create(this,R.raw.audio3);
 
         Button buttonMo = (Button)findViewById(R.id.Btnbutton);
+        Button buttonMov = (Button)findViewById(R.id.Btnbutton1);
 
         buttonMo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent netxM = new Intent(MainActivity.this,Multimedia3.class);
+                startActivity(netxM);
+            }
+        });
+
+        buttonMov.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent netxM = new Intent(MainActivity.this,Multimedia4.class);
                 startActivity(netxM);
             }
         });

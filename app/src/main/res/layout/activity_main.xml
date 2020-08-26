@@ -9,12 +9,10 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="381dp"
+        android:layout_width="389dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="196dp"
         android:contentDescription="@string/app_name"
-        app:layout_constraintBottom_toTopOf="@+id/btnbutton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,13 +81,27 @@
 
     <Button
         android:id="@+id/Btnbutton"
-        android:layout_width="134dp"
+        android:layout_width="0dp"
         android:layout_height="53dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
         android:layout_marginBottom="95dp"
         android:text="@string/siguiente"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/Btnbutton1"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="248dp"
+        android:layout_marginLeft="248dp"
+        android:layout_marginBottom="95dp"
+        android:text="@string/siguiente"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.484" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
