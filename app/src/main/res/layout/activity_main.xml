@@ -29,6 +29,7 @@
         android:fontFamily="sans-serif"
         android:background="@drawable/custom_button"
         android:textColor="#000000"
+        
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:visibility="visible" />
 
