@@ -43,7 +43,7 @@
                         android:layout_marginTop="20dp"
                         android:ems="10"
 
-                        android:hint="@string/ingrese_el_monto"
+                        android:hint="@string/unidades"
                         android:inputType="textPersonName" />
 
                     <EditText
@@ -53,7 +53,7 @@
                         android:layout_marginTop="80dp"
                         android:ems="10"
 
-                        android:hint="@string/ingrese_el_monto"
+                        android:hint="Unidades por Caja:"
                         android:inputType="textPersonName" />
 
                     <EditText
@@ -63,7 +63,7 @@
                         android:layout_marginTop="140dp"
                         android:ems="10"
 
-                        android:hint="@string/ingrese_el_monto"
+                        android:hint="@string/respuesta1"
                         android:inputType="textPersonName" />
 
                     <Button
