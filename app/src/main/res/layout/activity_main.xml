@@ -36,14 +36,58 @@
                     android:orientation="vertical">
 
 
+                    <EditText
+                        android:id="@+id/edtCantidad01"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:ems="10"
+
+                        android:hint="@string/ingrese_el_monto"
+                        android:inputType="textPersonName" />
+
+                    <EditText
+                        android:id="@+id/edtCantidad02"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="80dp"
+                        android:ems="10"
+
+                        android:hint="@string/ingrese_el_monto"
+                        android:inputType="textPersonName" />
+
+                    <EditText
+                        android:id="@+id/edtCantidad03"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="140dp"
+                        android:ems="10"
+
+                        android:hint="@string/ingrese_el_monto"
+                        android:inputType="textPersonName" />
+
+                    <Button
+                        android:id="@+id/idconvertir"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+
+                        android:layout_marginTop="220dp"
+
+
+                        android:text="@string/convertir" />
 
                     <TextView
                         android:id="@+id/txtRespuesta"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="150dp"
-                        android:layout_marginTop="320dp"
-                        android:text="Conversor propio" />
+                        android:layout_marginLeft="100dp"
+                        android:layout_marginTop="191dp"
+                        android:text="@string/respuesta"
+                        android:textSize="20dp" />
+
+
+
 
                 </RelativeLayout>
 
