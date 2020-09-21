@@ -7,6 +7,6 @@
     tools:context=".MainActivity"
     >
 
-
+    <listView/>
 
 </RelativeLayout>
