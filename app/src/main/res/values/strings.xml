@@ -11,8 +11,6 @@
     <string name="conversor_de_transferencias_de_datos">Conversor de Transferencias de Datos</string>
 
 
-
-
     <string-array name="paises">
         <item>Seleccione un Pais</item>
         <item>Estados Unidos </item>
@@ -136,8 +134,8 @@
     <string name="respuesta">Respuesta</string>
     <string name="conversor_propio">Conversor Propio</string>
     <string name="conversor_de_area">Conversor de Area</string>
-
-
+    <string name="respuesta1">Respuesta:</string>
+    <string name="unidades">Unidades</string>
 
     <string-array name="area">
         <item>Pie Cuadrado</item>
