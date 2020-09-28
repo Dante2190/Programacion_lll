@@ -1,7 +1,4 @@
-package com.example.lab1tiendasqlite;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.programacion_lll;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -19,8 +16,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.lab1tiendasqlite.ConexionSQLite.DBSQLite;
-import com.example.lab1tiendasqlite.ConexionSQLite.Productos;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.programacion_lll.ConexionSQLite.DBSQLite;
+import com.example.programacion_lll.ConexionSQLite.Productos;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
