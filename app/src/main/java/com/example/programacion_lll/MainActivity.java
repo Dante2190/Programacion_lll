@@ -34,7 +34,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     ProgressDialog progreso; // esto es para la barra de progreso.
     JSONArray datosJSON; // para guardar los datos que vienen del servidor en formato
     JSONObject jsonObject;
@@ -61,9 +61,9 @@ public class MainActivity extends Activity {
         });
     }
 
-    private void Nueva_Agenda() {
+    public void Nueva_Agenda() {
         Intent agregar_agenda = new Intent(MainActivity.this, Agregar_Agenda.class);
-        agregar_agenda.putExtra(parametros);
+        agregar_agenda.putExtras(parametros);
         startActivity(agregar_agenda);
     }
 
@@ -121,6 +121,7 @@ public class MainActivity extends Activity {
             try{
                 //oneccion al servidor
                 URL url = new URL("http://10.0.2.2:5984/db_agenda/_design/agenda/_view/mi-agenda");
+             //   URLConnection.setRequestMethod("GET");
                 URLConnection = (HttpURLConnection) url.openConnection();
 
                 InputStream in = new BufferedInputStream(URLConnection.getInputStream());
