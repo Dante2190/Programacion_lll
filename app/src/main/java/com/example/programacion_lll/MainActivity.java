@@ -76,10 +76,10 @@ public class MainActivity extends AppCompatActivity {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
         try {
             datosJSON.getJSONObject(info.position);
-            menu.setHeaderTitle(datosJSON.getJSONObject(info.position).getJSONObject("valeu").getString("nombre").toString());
+            menu.setHeaderTitle(datosJSON.getJSONObject(info.position).getJSONObject("value").getString("nombre").toString());
             posicion = info.position;
         }catch (Exception ex) {
-            Toast.makeText(MainActivity.this, "error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "error pasa algo raro", Toast.LENGTH_SHORT).show();
         }
 
         }
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                     parametros.putString("valores", datosJSON.getJSONObject(posicion).getJSONObject("value").toString());
                     Nueva_Agenda();
                 }catch (Exception ex){
-                    Toast.makeText(MainActivity.this, "error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "error pasa algo raro", Toast.LENGTH_SHORT).show();
                 }
                 return true;
             case R.id.mnxEliminar:
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     miData.put("_id", datosJSON.getJSONObject(posicion).getJSONObject("value").getString("_rev"));
                 }catch (Exception ex){
-                    Toast.makeText(MainActivity.this, "error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "error al eliminar  ", Toast.LENGTH_SHORT).show();
                 }
                 EliminarDatos objEliminar = new EliminarDatos();
                 objEliminar.execute(miData.toString());
@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private class EliminarDatos  extends AsyncTask<String, String, String>{
+    private class EliminarDatos  extends AsyncTask<String, String, String> {
         HttpURLConnection urlConnection;
 
         @Override
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
                 //conexion al servidor
                 String uri = "http://10.0.2.2:5984/db_agenda/"+
                         datosJSON.getJSONObject(posicion).getJSONObject("value").getString("_id")+"?rev="+
-                        datosJSON.getJSONObject(posicion).getJSONObject("value").getString("_ev");
+                        datosJSON.getJSONObject(posicion).getJSONObject("value").getString("_rev");
                 URL url = new URL(uri);
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("DELETE");

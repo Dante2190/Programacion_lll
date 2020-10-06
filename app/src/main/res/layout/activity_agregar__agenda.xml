@@ -79,12 +79,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="410dp"
         android:text="guardar "
-
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:onClick="guardar_Producto"
-
-        tools:ignore="OnClick" />
+        android:layout_marginRight="10dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnRegresar"
