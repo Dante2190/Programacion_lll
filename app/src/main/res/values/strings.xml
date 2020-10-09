@@ -1,6 +1,9 @@
 <resources>
+
     <string name="app_name">Programacion_lll</string>
-    <string name="buscar_producto">buscar producto</string>
+
+    <string name="app_name">Webservices con COUCHDB</string>
+
 
     <string name="codigo">codigo</string>
 
