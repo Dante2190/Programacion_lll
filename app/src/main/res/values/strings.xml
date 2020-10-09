@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">Programacion_lll</string>
+    <string name="buscar_producto">buscar producto</string>
 
+    <string name="codigo">codigo</string>
+
+    <string name="presentacion" />
+    <string name="descripcion">descripcion</string>
+    <string name="marca">marca</string>
+    <string name="presentacionz">presentacion</string>
+    <string name="precio">precio</string>
+    <string name="guardar_productos">guardar productos</string>
+    <string name="mostrar_productos">Mostrar Productos</string>
 </resources>
