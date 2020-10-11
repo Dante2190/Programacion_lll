@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
@@ -39,13 +41,16 @@ public class MainActivity extends AppCompatActivity {
     JSONObject jsonObject;
     Bundle parametros = new Bundle();
     int posicion = 0;
+    ArrayList<String> arrayList =new ArrayList<String>();
+    ArrayList<String> copyStringArrayList = new ArrayList<String>();
+    ArrayAdapter<String> stringArrayAdapter;
     InputStreamReader isReader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        buscarProductos();
         ObtenerDatos myAsync = new ObtenerDatos();
         myAsync.execute();
 
@@ -57,6 +62,37 @@ public class MainActivity extends AppCompatActivity {
                 Nueva_Tienda();
             }
         });
+
+    }
+
+    void buscarProductos(){
+        final EditText tempVal = (EditText) findViewById(R.id.edtBuscar);
+        tempVal.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                arrayList.clear();
+                if( tempVal.getText().toString().trim().length()<1 ){//no hay texto para buscar
+                    arrayList.addAll(copyStringArrayList);
+                } else{//hacemos la busqueda
+                    for (String productos : copyStringArrayList){
+                        if(productos.toLowerCase().contains(tempVal.getText().toString().trim().toLowerCase())){
+                            arrayList.add(productos);
+                        }
+                    }
+                }
+                stringArrayAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
     public void Nueva_Tienda() {
@@ -64,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
         agregar.putExtras(parametros);
         startActivity(agregar);
     }
+
+
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {

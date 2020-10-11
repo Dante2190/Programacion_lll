@@ -2,7 +2,7 @@
 
     <string name="app_name">Programacion_lll</string>
 
-    <string name="app_name">Webservices con COUCHDB</string>
+
 
 
     <string name="codigo">codigo</string>
@@ -14,4 +14,5 @@
     <string name="precio">precio</string>
     <string name="guardar_productos">guardar productos</string>
     <string name="mostrar_productos">Mostrar Productos</string>
+    <string name="buscar_producto">buscar_producto</string>
 </resources>

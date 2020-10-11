@@ -24,8 +24,6 @@
 
         <activity android:name=".Agregar_Productos"></activity>
 
-        <activity android:name=".Agregar_Agenda"></activity>
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
