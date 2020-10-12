@@ -70,10 +70,9 @@ public class MainActivity extends AppCompatActivity {
         tempVal.addTextChangedListener(new TextWatcher() {
 
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
-
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 arrayList.clear();
@@ -100,8 +99,6 @@ public class MainActivity extends AppCompatActivity {
         agregar.putExtras(parametros);
         startActivity(agregar);
     }
-
-
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
@@ -179,25 +176,33 @@ public class MainActivity extends AppCompatActivity {
             try {
                 jsonObject = new JSONObject(s);
                 datosJSON= jsonObject.getJSONArray("rows");
-                ListView ltsTienda = (ListView)findViewById(R.id.ltsTienda);
-
-                final ArrayList<String> alTienda= new ArrayList<>();
-                final ArrayAdapter<String> aaTienda = new ArrayAdapter<>(MainActivity.this,
-                        android.R.layout.simple_list_item_1, alTienda);
-                ltsTienda.setAdapter(aaTienda);
-
-                for (int i = 0; i < datosJSON.length(); i++){
-                    alTienda.add(datosJSON.getJSONObject(i).getJSONObject("value").getString("marca").toString());
-
-                }
-                aaTienda.notifyDataSetChanged();
-                registerForContextMenu(ltsTienda);
+                mostrarProductos();
             }catch (Exception ex){
                 Toast.makeText(MainActivity.this, "Error: q paso aqui  " + ex.getMessage(),Toast.LENGTH_SHORT).show();
             }
         }
-
     }
+
+    private void mostrarProductos(){
+        ListView ltsAmigos = findViewById(R.id.ltsTienda);
+        try {
+            arrayList.clear();
+            stringArrayAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, arrayList);
+            ltsAmigos.setAdapter(stringArrayAdapter);
+
+            for (int i = 0; i < datosJSON.length(); i++) {
+                stringArrayAdapter.add(datosJSON.getJSONObject(i).getJSONObject("value").getString("marca"));
+            }
+            copyStringArrayList.clear();
+            copyStringArrayList.addAll(arrayList);
+
+            stringArrayAdapter.notifyDataSetChanged();
+            registerForContextMenu(ltsAmigos);
+        }catch (Exception ex){
+            Toast.makeText(MainActivity.this, "Error al mostrar los datos: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+
     private class EliminarDatos  extends AsyncTask<String, String, String> {
         HttpURLConnection urlConnection;
 

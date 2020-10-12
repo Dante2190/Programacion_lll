@@ -16,7 +16,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/custom_edit"
-        android:hint="@string/buscar_producto"
+        android:hint="buscar producto"
         android:paddingStart="10dp"
         android:paddingTop="27dp"
         android:paddingLeft="10dp" />
