@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,9 @@ public class Agregar_Productos extends AppCompatActivity {
     String rev = "";
     JSONObject datosJSON;
     String resp;
+
+
+    EditText edt1,edt2,edt3,edt4,edt5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +43,12 @@ public class Agregar_Productos extends AppCompatActivity {
 
         Bundle parametros = getIntent().getExtras();
         accion = parametros.getString("accion");
+
+        edt1 = (EditText)findViewById(R.id.editCodigo);
+        edt2 = (EditText)findViewById(R.id.editDescrip);
+        edt3 = (EditText)findViewById(R.id.editMarca);
+        edt4 = (EditText)findViewById(R.id.editPresen);
+        edt5 = (EditText)findViewById(R.id.editPrecio);
 
         if (accion.equals("modificar")) {
             try {
@@ -72,43 +82,51 @@ public class Agregar_Productos extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                TextView temp = (TextView) findViewById(R.id.editCodigo);
-                String codigo = temp.getText().toString();
+                if (edt1.getText().toString().isEmpty() || edt2.getText().toString().isEmpty()  ||
+                        edt3.getText().toString().isEmpty()  || edt4.getText().toString().isEmpty()  ||
+                        edt5.getText().toString().isEmpty() ){
+                    Toast.makeText(Agregar_Productos.this, "Rellene los campos por favor : ", Toast.LENGTH_LONG).show();
+                }else {
+                    TextView temp = (TextView) findViewById(R.id.editCodigo);
+                    String codigo = temp.getText().toString();
 
-                temp = (TextView) findViewById(R.id.editDescrip);
-                String descripcion = temp.getText().toString();
+                    temp = (TextView) findViewById(R.id.editDescrip);
+                    String descripcion = temp.getText().toString();
 
-                temp = (TextView) findViewById(R.id.editMarca);
-                String marca  = temp.getText().toString();
+                    temp = (TextView) findViewById(R.id.editMarca);
+                    String marca  = temp.getText().toString();
 
-                temp = (TextView) findViewById(R.id.editPresen);
-                String presentacion = temp.getText().toString();
+                    temp = (TextView) findViewById(R.id.editPresen);
+                    String presentacion = temp.getText().toString();
 
-                temp = (TextView) findViewById(R.id.editPrecio);
-                String precio = temp.getText().toString();
+                    temp = (TextView) findViewById(R.id.editPrecio);
+                    String precio = temp.getText().toString();
 
-                JSONObject miData = new JSONObject();
+                    JSONObject miData = new JSONObject();
 
-                try {
-                    if (accion.equals("modificar")){
-                        miData.put("_id", id);
-                        miData.put("_rev", rev);
+                    try {
+                        if (accion.equals("modificar")){
+                            miData.put("_id", id);
+                            miData.put("_rev", rev);
+                        }
+                        miData.put("codigo", codigo);
+                        miData.put("descripcion", descripcion);
+                        miData.put("marca", marca);
+                        miData.put("presentacion", presentacion);
+                        miData.put("precio", precio);
+
+                        EnviarDatos objEnviar = new EnviarDatos();
+                        objEnviar.execute(miData.toString());
+
+
+                    }catch (Exception ex){
+                        Toast.makeText(Agregar_Productos.this, "Error al guardar: "+ex.getMessage().toString(),
+                                Toast.LENGTH_LONG).show();
                     }
-                    miData.put("codigo", codigo);
-                    miData.put("descripcion", descripcion);
-                    miData.put("marca", marca);
-                    miData.put("presentacion", presentacion);
-                    miData.put("precio", precio);
-
-                    EnviarDatos objEnviar = new EnviarDatos();
-                    objEnviar.execute(miData.toString());
-                    // Validar();
-
-                }catch (Exception ex){
-                    Toast.makeText(Agregar_Productos.this, "Error al guardar: "+ex.getMessage().toString(),
-                            Toast.LENGTH_LONG).show();
                 }
-            }
+                }
+
+
         });
         FloatingActionButton btnRegresa = (FloatingActionButton)findViewById(R.id.btnRegresar);
         btnRegresa.setOnClickListener(new View.OnClickListener() {
