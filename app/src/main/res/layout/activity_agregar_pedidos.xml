@@ -1,9 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AgregarPedidos">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nuevo pedido "
+        android:textSize="35sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/edtNumeroP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="numero de pedido"
+        android:layout_marginTop="64dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
+
+    <EditText
+        android:id="@+id/edtNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="nombre del cliente"
+        android:layout_marginTop="124dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
+
+    <EditText
+        android:id="@+id/edtDireccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="direccion"
+        android:layout_marginTop="184dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
+
+
+
+    <EditText
+        android:id="@+id/edtPedidos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="pedido "
+        android:layout_marginTop="240dp"
+        android:inputType="textMultiLine"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnGuardarPedidos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_menu_save"
+        android:layout_marginTop="560dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        tools:ignore="RelativeOverlap"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnMostrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_menu_revert"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:layout_alignParentRight="true" />
+
+
+</RelativeLayout>
