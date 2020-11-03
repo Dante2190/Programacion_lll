@@ -19,8 +19,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AgregarPedidos"></activity>
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".LoginActivity">
+
+        </activity>
+
+        <activity android:name=".MainActivity" >
+
+        </activity>
+
+        <activity android:name=".AgregarPedidos" />
+
+        <activity android:name=".RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
