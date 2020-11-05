@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.programacion_lll.R;
@@ -20,6 +22,9 @@ public class LoginActivity extends AppCompatActivity {
     private EditText edtEmail, edtContra;
     private Button btnLogin;
 
+    TextView textView;
+    ProgressBar progressBar;
+
     private String email = "";
     private String password = "";
 
@@ -31,22 +36,33 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        textView = findViewById(R.id.textV);
+        progressBar = findViewById(R.id.progressBar);
 
         mAuth = FirebaseAuth.getInstance();
 
         edtEmail = (EditText)findViewById(R.id.editEmail);
         edtContra = (EditText)findViewById(R.id.editcontra);
 
+        progressBar.setVisibility(View.INVISIBLE);
+        textView.setVisibility(View.INVISIBLE);
+
         btnLogin = (Button) findViewById(R.id.btnIniciarSesion);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
+                textView.setVisibility(View.VISIBLE);
+
                 email = edtEmail.getText().toString();
                 password = edtContra.getText().toString();
                 if (!email.isEmpty() && !password.isEmpty()){
+
                     LoginUsers();
                 }
                 else {
+                    progressBar.setVisibility(View.INVISIBLE);
+                    textView.setVisibility(View.INVISIBLE);
                     Toast.makeText(LoginActivity.this, "complete los campos por favor crt", Toast.LENGTH_SHORT).show();
                 }
             }
