@@ -1,3 +1,6 @@
+/*
+@actor Ricardo Adalberto Iraheta Amaya
+ */
 package com.example.programacion_lll;
 
 import androidx.annotation.NonNull;
@@ -8,6 +11,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +29,9 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText edtNombre, edtEmail, edtContra;
     private Button registrar;
     private Button login;
+
+    TextView textView;
+    ProgressBar progressBar;
 
     private String name = "";
     private String email = "";
@@ -44,6 +52,12 @@ public class RegisterActivity extends AppCompatActivity {
         edtEmail = (EditText)findViewById(R.id.editEmail);
         edtContra = (EditText)findViewById(R.id.editcontra);
 
+        textView = findViewById(R.id.textV);
+        progressBar = findViewById(R.id.progressBar);
+
+        progressBar.setVisibility(View.INVISIBLE);
+        textView.setVisibility(View.INVISIBLE);
+
         login = (Button) findViewById(R.id.btnLogin);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +70,10 @@ public class RegisterActivity extends AppCompatActivity {
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                progressBar.setVisibility(View.VISIBLE);
+                textView.setVisibility(View.VISIBLE);
+
                 name = edtNombre.getText().toString();
                 email = edtEmail.getText().toString();
                 password = edtContra.getText().toString();
@@ -65,9 +83,13 @@ public class RegisterActivity extends AppCompatActivity {
                         RegistrarUser();
                     }
                     else {
+                        progressBar.setVisibility(View.INVISIBLE);
+                        textView.setVisibility(View.INVISIBLE);
                         Toast.makeText(RegisterActivity.this, "la contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show();
                     }
                 }else {
+                    progressBar.setVisibility(View.INVISIBLE);
+                    textView.setVisibility(View.INVISIBLE);
                     Toast.makeText(RegisterActivity.this, "debe llenar los campos", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -80,6 +102,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
 
+
                     Map<String, Object> map = new HashMap<>();
                     map.put("name", name);
                     map.put("email", email);
@@ -90,6 +113,7 @@ public class RegisterActivity extends AppCompatActivity {
                     mDatabase.child("Users").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task2) {
+
                             if (task2.isSuccessful()){
                                 startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                                 finish();

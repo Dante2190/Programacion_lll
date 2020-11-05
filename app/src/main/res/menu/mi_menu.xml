@@ -2,8 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/item1"
-        android:title="@string/cerrar_sesion"
-        app:showAsAction="never"/>
+    <item android:id="@+id/icon_save"
+        android:icon="@drawable/save_96px"
+        android:title="Edit Done"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/icon_delete"
+        android:icon="@drawable/return_96px"
+        android:title="Edit Done"
+        app:showAsAction="always"/>
 
 </menu>
