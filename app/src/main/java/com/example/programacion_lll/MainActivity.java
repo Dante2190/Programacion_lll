@@ -30,6 +30,7 @@ import android.widget.Toast;
 import com.example.programacion_lll.cnxsqlite.Pedidos;
 import com.example.programacion_lll.cnxsqlite.SQLiteDB;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -51,11 +52,16 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Pedidos> copyStringArrayList = new ArrayList<Pedidos>();
     ListView listaPedidos;
 
+    private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mAuth = FirebaseAuth.getInstance();
+
         FloatingActionButton AgregarPedidos = (FloatingActionButton) findViewById(R.id.btnNuevoPedido);
         AgregarPedidos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,10 +148,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //cerrar sesion
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_ini,menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.icon_add:
+                mAuth.signOut();
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                finish();
+                return true;
+        }
+        return true;
     }
 
     @Override

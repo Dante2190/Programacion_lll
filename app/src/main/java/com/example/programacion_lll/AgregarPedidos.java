@@ -1,11 +1,14 @@
 package com.example.programacion_lll;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,9 +16,17 @@ import com.example.programacion_lll.cnxsqlite.SQLiteDB;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class AgregarPedidos extends AppCompatActivity {
+    private EditText nPedido, edtNombre, edtDireccion, edtPedido;
     SQLiteDB miDB;
     String accion ="nuevo";
     String idPedido;
+
+    private String numero = "";
+    private String nombre = "";
+    private String direccion = "";
+    private String pedido = "";
+
+
 
 
     @Override
@@ -23,12 +34,23 @@ public class AgregarPedidos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_pedidos);
 
+        nPedido = (EditText)findViewById(R.id.edtNumeroP) ;
+        edtNombre = (EditText)findViewById(R.id.edtNombre) ;
+        edtDireccion = (EditText)findViewById(R.id.edtDireccion) ;
+        edtPedido = (EditText)findViewById(R.id.edtPedidos) ;
+
         FloatingActionButton btnPedido = ( FloatingActionButton) findViewById(R.id.btnGuardarPedidos);
         btnPedido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GuardarDatosPedidos();
-                finish();
+                numero= nPedido.getText().toString();
+                nombre= edtNombre.getText().toString();
+                direccion=  edtDireccion.getText().toString();
+                pedido = edtPedido.getText().toString();
+                if (!numero.isEmpty() && !nombre.isEmpty() && direccion.isEmpty() && pedido.isEmpty() ) {
+                    GuardarDatosPedidos();
+                    finish();
+                }else Toast.makeText(AgregarPedidos.this, "llene los campos por favor", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -42,10 +64,25 @@ public class AgregarPedidos extends AppCompatActivity {
         MostrarDatos();
     }
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.mi_menu,menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.icon_save:
+               GuardarDatosPedidos();
+                return true;
+            case R.id.icon_regresar:
+                MostrarListaPedidos();
+                return true;
+        }
+        return true;
     }
 
     private void MostrarDatos() {

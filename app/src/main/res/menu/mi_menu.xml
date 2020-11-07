@@ -7,7 +7,7 @@
         android:title="Edit Done"
         app:showAsAction="always"/>
 
-    <item android:id="@+id/icon_delete"
+    <item android:id="@+id/icon_regresar"
         android:icon="@drawable/return_96px"
         android:title="Edit Done"
         app:showAsAction="always"/>
