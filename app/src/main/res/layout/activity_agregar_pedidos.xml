@@ -11,29 +11,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Nuevo pedido "
+        android:textColor="#000000"
         android:textSize="35sp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:gravity="center"/>
 
-    <ImageView
-        android:id="@+id/imgProducto"
-        android:layout_width="370dp"
-        android:layout_height="135dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/ic_photo_camera" />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="145dp"
+        android:layout_height="145dp"
+        android:src="@drawable/photo_camera_96"
+        app:civ_circle_background_color="#ffffff"
+        app:civ_border_color="#EAE5E4"
+        app:civ_border_width="5dp"
+       android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"/>
 
     <ImageView
         android:id="@+id/suburImage"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="90dp"
+        android:layout_width="80dp"
         android:layout_height="60dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginRight="6dp"
-        android:layout_marginTop="192dp"
-        android:src="@drawable/ic_upload_photo" />
+        android:layout_marginTop="212dp"
+        android:src="@drawable/ic_baseline_photo_library_24" />
 
 
 
@@ -41,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="numero de pedido"
-        android:layout_marginTop="260dp">
+        android:layout_marginTop="280dp">
 
         <EditText
             android:id="@+id/edtNumeroP"
@@ -58,7 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="nombre del cliente"
-        android:layout_marginTop="320dp">
+        android:layout_marginTop="340dp">
 
         <EditText
             android:id="@+id/edtNombre"
@@ -75,7 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="direccion"
-        android:layout_marginTop="390dp">
+        android:layout_marginTop="410dp">
 
         <EditText
             android:id="@+id/edtDireccion"
@@ -94,26 +97,26 @@
         android:ems="10"
         android:gravity="top"
         android:hint="pedido "
-        android:layout_marginTop="460dp"
+        android:layout_marginTop="480dp"
         android:inputType="textMultiLine"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"/>
 
 
-
+<!--
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnGuardarPedidos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_menu_save"
-        android:layout_marginTop="560dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="16dp"
-        android:clickable="true"
-        android:focusable="true"
-        tools:ignore="RelativeOverlap"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="16dp" />
+    android:id="@+id/btnGuardarPedidos"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:src="@android:drawable/ic_menu_save"
+    android:layout_marginTop="560dp"
+    android:layout_alignParentEnd="true"
+    android:layout_marginEnd="16dp"
+    android:clickable="true"
+    android:focusable="true"
+    tools:ignore="RelativeOverlap"
+    android:layout_alignParentRight="true"
+    android:layout_marginRight="16dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnMostrar"
@@ -125,6 +128,8 @@
         android:layout_margin="16dp"
         android:clickable="true"
         android:layout_alignParentRight="true" />
+        -->
+
 
 
 </RelativeLayout>

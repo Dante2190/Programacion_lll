@@ -74,9 +74,9 @@ public class RegisterActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
                 textView.setVisibility(View.VISIBLE);
 
-                name = edtNombre.getText().toString();
-                email = edtEmail.getText().toString();
-                password = edtContra.getText().toString();
+                name = edtNombre.getText().toString().trim();
+                email = edtEmail.getText().toString().trim();
+                password = edtContra.getText().toString().trim();
 
                 if (!name.isEmpty() && !email.isEmpty() && !password.isEmpty()){
                     if (password.length() >= 6){

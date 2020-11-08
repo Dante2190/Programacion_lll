@@ -54,8 +54,8 @@ public class LoginActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
                 textView.setVisibility(View.VISIBLE);
 
-                email = edtEmail.getText().toString();
-                password = edtContra.getText().toString();
+                email = edtEmail.getText().toString().trim();
+                password = edtContra.getText().toString().trim();
                 if (!email.isEmpty() && !password.isEmpty()){
 
                     LoginUsers();
