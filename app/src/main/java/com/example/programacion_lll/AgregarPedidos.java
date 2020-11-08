@@ -39,7 +39,7 @@ public class AgregarPedidos extends AppCompatActivity {
         edtDireccion = (EditText)findViewById(R.id.edtDireccion) ;
         edtPedido = (EditText)findViewById(R.id.edtPedidos) ;
 
-        FloatingActionButton btnPedido = ( FloatingActionButton) findViewById(R.id.btnGuardarPedidos);
+     /*   FloatingActionButton btnPedido = ( FloatingActionButton) findViewById(R.id.btnGuardarPedidos);
         btnPedido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,7 +47,7 @@ public class AgregarPedidos extends AppCompatActivity {
                 nombre= edtNombre.getText().toString();
                 direccion=  edtDireccion.getText().toString();
                 pedido = edtPedido.getText().toString();
-                if (!numero.isEmpty() && !nombre.isEmpty() && direccion.isEmpty() && pedido.isEmpty() ) {
+                if (!numero.isEmpty() && !nombre.isEmpty() && !direccion.isEmpty() && !pedido.isEmpty() ) {
                     GuardarDatosPedidos();
                     finish();
                 }else Toast.makeText(AgregarPedidos.this, "llene los campos por favor", Toast.LENGTH_SHORT).show();
@@ -60,7 +60,7 @@ public class AgregarPedidos extends AppCompatActivity {
             public void onClick(View v) {
                 MostrarListaPedidos();
             }
-        });
+        });*/
         MostrarDatos();
     }
 
@@ -76,7 +76,13 @@ public class AgregarPedidos extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.icon_save:
-               GuardarDatosPedidos();
+                numero= nPedido.getText().toString();
+                nombre= edtNombre.getText().toString();
+                direccion=  edtDireccion.getText().toString();
+                pedido = edtPedido.getText().toString();
+                if (!numero.isEmpty() && !nombre.isEmpty() && !direccion.isEmpty() && !pedido.isEmpty() ) {
+                    GuardarDatosPedidos();
+                }else Toast.makeText(AgregarPedidos.this, "llene los campos por favor", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.icon_regresar:
                 MostrarListaPedidos();
