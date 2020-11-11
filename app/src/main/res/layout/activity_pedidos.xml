@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    tools:context=".AgregarPedidos">
+    tools:context=".PedidosActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -19,14 +18,13 @@
         android:gravity="center"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/tomarFotos"
         android:layout_width="145dp"
         android:layout_height="145dp"
         android:src="@drawable/photo_camera_96"
         app:civ_circle_background_color="#ffffff"
         app:civ_border_color="#EAE5E4"
         app:civ_border_width="5dp"
-       android:layout_centerHorizontal="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="90dp"/>
 
     <ImageView
@@ -102,35 +100,4 @@
         android:inputType="textMultiLine"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"/>
-
-
-<!--
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-    android:id="@+id/btnGuardarPedidos"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:src="@android:drawable/ic_menu_save"
-    android:layout_marginTop="560dp"
-    android:layout_alignParentEnd="true"
-    android:layout_marginEnd="16dp"
-    android:clickable="true"
-    android:focusable="true"
-    tools:ignore="RelativeOverlap"
-    android:layout_alignParentRight="true"
-    android:layout_marginRight="16dp" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnMostrar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_menu_revert"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"
-        android:clickable="true"
-        android:layout_alignParentRight="true" />
-        -->
-
-
-
 </RelativeLayout>
