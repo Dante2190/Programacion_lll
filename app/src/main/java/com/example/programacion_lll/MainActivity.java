@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task2) {
 
                             if (task2.isSuccessful()){
-                                startActivity(new Intent(MainActivity.this, PedidosActivity.class));
+                                startActivity(new Intent(MainActivity.this, VistaActivity.class));
                                 finish();
                             }
                             else {

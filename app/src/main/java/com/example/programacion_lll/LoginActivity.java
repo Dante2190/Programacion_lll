@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    startActivity(new Intent(LoginActivity.this, PedidosActivity.class));
+                    startActivity(new Intent(LoginActivity.this, VistaActivity.class));
                     finish();
                 }
                 else {
