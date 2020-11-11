@@ -6,33 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".PedidosActivity">
 
-    <TextView
+    <com.github.florent37.shapeofview.shapes.ArcView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nuevo pedido "
-        android:textColor="#000000"
-        android:textSize="35sp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:gravity="center"/>
+        android:layout_height="170dp"
+        app:shape_arc_cropDirection="outside"
+        app:shape_arc_height="20dp"
+        app:shape_arc_position="bottom"
+        >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#872EFF"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nuevo pedido "
+            android:textColor="#ffffff"
+            android:textSize="35sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"/>
+
+    </com.github.florent37.shapeofview.shapes.ArcView>
+
+
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="145dp"
-        android:layout_height="145dp"
+        android:id="@+id/tomarFotos"
+        android:layout_width="195dp"
+        android:layout_height="175dp"
         android:src="@drawable/photo_camera_96"
         app:civ_circle_background_color="#ffffff"
         app:civ_border_color="#EAE5E4"
         app:civ_border_width="5dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="90dp"/>
+        android:layout_marginTop="75dp"/>
 
     <ImageView
         android:id="@+id/suburImage"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="80dp"
         android:layout_height="60dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="6dp"
         android:layout_marginTop="212dp"
         android:src="@drawable/ic_baseline_photo_library_24" />
