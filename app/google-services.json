@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "401608565050",
+    "firebase_url": "https://proyectofinalrapipedi2.firebaseio.com",
+    "project_id": "proyectofinalrapipedi2",
+    "storage_bucket": "proyectofinalrapipedi2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401608565050:android:874dab939daf7bb2467003",
+        "android_client_info": {
+          "package_name": "com.example.programacion_lll"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401608565050-utkad17purog1vgq5djpvgmks4dhlfsn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtoBwFI58rDOso-dkhM3ht91q7TuY48y0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "401608565050-utkad17purog1vgq5djpvgmks4dhlfsn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
