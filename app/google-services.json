@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "855043220812",
-    "firebase_url": "https://proyectofinalprogra3-85b48.firebaseio.com",
-    "project_id": "proyectofinalprogra3-85b48",
-    "storage_bucket": "proyectofinalprogra3-85b48.appspot.com"
+    "project_number": "401608565050",
+    "firebase_url": "https://proyectofinalrapipedi2.firebaseio.com",
+    "project_id": "proyectofinalrapipedi2",
+    "storage_bucket": "proyectofinalrapipedi2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:855043220812:android:63353f818acb12d18fdbe9",
+        "mobilesdk_app_id": "1:401608565050:android:874dab939daf7bb2467003",
         "android_client_info": {
           "package_name": "com.example.programacion_lll"
         }
       },
       "oauth_client": [
         {
-          "client_id": "855043220812-rqc75ejpo7f4sqgf71uiuoofathp38rs.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.programacion_lll",
-            "certificate_hash": "0b411cfa95fa3f3d029d6864b3f8f3e5d510d7f2"
-          }
-        },
-        {
-          "client_id": "855043220812-7pt60ogu7fojdl55bf7p8f7t7b3jhil1.apps.googleusercontent.com",
+          "client_id": "401608565050-utkad17purog1vgq5djpvgmks4dhlfsn.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCqkDV8ZCgG3e_4TzeMY1w2tjUL2ggzHPU"
+          "current_key": "AIzaSyCtoBwFI58rDOso-dkhM3ht91q7TuY48y0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "855043220812-7pt60ogu7fojdl55bf7p8f7t7b3jhil1.apps.googleusercontent.com",
+              "client_id": "401608565050-utkad17purog1vgq5djpvgmks4dhlfsn.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
