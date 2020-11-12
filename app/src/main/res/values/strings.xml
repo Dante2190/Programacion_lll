@@ -1,23 +1,10 @@
 <resources>
-    <string name="app_name">RapiPedi2</string>
-
-
-    <string name="codigo">codigo</string>
-
-    <string name="presentacion" />
-    <string name="descripcion">descripcion</string>
-    <string name="marca">marca</string>
-    <string name="presentacionz">presentacion</string>
-    <string name="precio">precio</string>
-    <string name="guardar_productos">guardar productos</string>
-    <string name="mostrar_productos">Mostrar Productos</string>
-    <string name="buscar_producto">buscar_producto</string>
-    <string name="email">email</string>
-    <string name="nombre">nombre</string>
-    <string name="contrase_a">contraseña</string>
-    <string name="registrar">registrar</string>
-    <string name="ya_tengo_cuenta">ya tengo cuenta</string>
-    <string name="cerrar_sesion">cerrar sesion</string>
-    <string name="registrarse">Registrarse</string>
+    <string name="app_name">Programacion_lll</string>
+    <string name="codigo">Codigo:</string>
+    <string name="descripcion">Descripcion:</string>
+    <string name="marca">Marca:</string>
+    <string name="presentacion">Presentacion:</string>
+    <string name="precio">Precio:</string>
+    <string name="guardar_productos">Guardar Productos</string>
 
 </resources>
