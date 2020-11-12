@@ -1,6 +1,8 @@
 package com.example.programacion_lll;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,8 +51,8 @@ public class Adaptador extends BaseAdapter {
         try {
             ped = datos.get(i);
             textView.setText(ped.getNumero_pedido());
-            //   Bitmap imageBitmap = BitmapFactory.decodeFile(not.getUrlImg());
-            //  imageView.setImageBitmap(imageBitmap);
+             Bitmap imageBitmap = BitmapFactory.decodeFile(ped.getUrlImg());
+             imageView.setImageBitmap(imageBitmap);
         }catch (Exception ex){ }
         return itemView;
     }

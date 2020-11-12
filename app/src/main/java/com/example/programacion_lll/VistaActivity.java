@@ -108,7 +108,7 @@ public class VistaActivity extends AppCompatActivity {
         stringArrayList.clear();
         listaPedidos = (ListView)findViewById(R.id.listPedidos);
         do {
-            pedidos = new Pedidos(misPedidos.getString(0),misPedidos.getString(1), misPedidos.getString(2), misPedidos.getString(3), misPedidos.getString(4));
+            pedidos = new Pedidos(misPedidos.getString(0),misPedidos.getString(1), misPedidos.getString(2), misPedidos.getString(3), misPedidos.getString(4), misPedidos.getString(5));
             stringArrayList.add(pedidos);
         }while(misPedidos.moveToNext());
         Adaptador adapter = new Adaptador(getApplicationContext(),stringArrayList);
