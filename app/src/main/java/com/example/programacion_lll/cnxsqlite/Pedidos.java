@@ -6,13 +6,16 @@ public class Pedidos {
     String nombre_cliente;
     String direcion;
     String pedidos;
+    String urlImg;
 
-    public Pedidos(String id, String numero_pedido, String nombre_cliente, String direcion, String pedidos) {
+    public Pedidos(String id, String numero_pedido, String nombre_cliente, String direcion, String pedidos,  String urlImg) {
         this.id = id;
         this.numero_pedido = numero_pedido;
         this.nombre_cliente = nombre_cliente;
         this.direcion = direcion;
         this.pedidos = pedidos;
+        this.urlImg = urlImg;
+
     }
 
     public String getId() {
@@ -54,4 +57,13 @@ public class Pedidos {
     public void setPedidos(String pedidos) {
         this.pedidos = pedidos;
     }
+
+    public String getUrlImg() {
+        return urlImg;
+    }
+
+    public void setUrlImg(String urlImg) {
+        this.urlImg = urlImg;
+    }
+
 }

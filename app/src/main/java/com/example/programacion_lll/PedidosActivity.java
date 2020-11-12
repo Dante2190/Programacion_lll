@@ -24,6 +24,8 @@ import android.widget.Toast;
 
 import com.example.programacion_lll.cnxsqlite.Pedidos;
 import com.example.programacion_lll.cnxsqlite.SQLiteDB;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -55,6 +57,7 @@ public class PedidosActivity extends AppCompatActivity {
 
     private static final int UPLOAD_PICTURE=2;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,9 +73,9 @@ public class PedidosActivity extends AppCompatActivity {
 
         MostrarDatos();
 
-        TomarFotoPedidos();
+       // TomarFotoPedidos();
 
-        mUploadPicture = (ImageView) findViewById(R.id.suburImage);
+      /*  mUploadPicture = (ImageView) findViewById(R.id.suburImage);
         mUploadPicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,7 +90,7 @@ public class PedidosActivity extends AppCompatActivity {
                 intent.setType("image/*");
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), UPLOAD_PICTURE);
             }
-        });
+        });*/
     }
 
     //fotos desde aqui
@@ -238,13 +241,14 @@ public class PedidosActivity extends AppCompatActivity {
                 tempVal = findViewById(R.id.edtPedidos);
                 tempVal.setText(dataPedidos[4]);
 
-                productImagePath= dataPedidos[5];
+           /*     productImagePath= dataPedidos[5];
                 Bitmap imageBitmap = BitmapFactory.decodeFile(productImagePath);
-                imgProducto.setImageBitmap(imageBitmap);
+                imgProducto.setImageBitmap(imageBitmap);*/
 
 
             }
         } catch (Exception ex) {
+            Toast.makeText(this, "error al mostrar atos ", Toast.LENGTH_SHORT).show();
             ///
         }
     }
@@ -256,12 +260,12 @@ public class PedidosActivity extends AppCompatActivity {
 
     private void GuardarDatosPedidos() {
 
-        if(mImageView.getDrawable() !=null){
+     /*   if(mImageView.getDrawable() !=null){
             createProductImageFile();
             productImagePath = mProductImagePath;
         }else {
             productImagePath =  urlCompletaImg;
-        }
+        }*/
 
         TextView tempVal = findViewById(R.id.edtNumeroP);
         String numero = tempVal.getText().toString();
@@ -275,7 +279,7 @@ public class PedidosActivity extends AppCompatActivity {
         tempVal = findViewById(R.id.edtPedidos);
         String pedidos = tempVal.getText().toString();
 
-        String[] data = {idPedido, numero, nombre, direccion, pedidos,productImagePath};
+        String[] data = {idPedido, numero, nombre, direccion, pedidos};
 
         miDB = new SQLiteDB(getApplicationContext(), "", null, 1);
         miDB.MantenimientoPedidos(accion, data);
