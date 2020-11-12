@@ -1,6 +1,4 @@
 <resources>
-
-
     <string name="app_name">RapiPedi2</string>
 
 
@@ -21,4 +19,5 @@
     <string name="ya_tengo_cuenta">ya tengo cuenta</string>
     <string name="cerrar_sesion">cerrar sesion</string>
     <string name="registrarse">Registrarse</string>
+
 </resources>
