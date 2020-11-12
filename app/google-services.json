@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "595076268215",
+    "firebase_url": "https://proyectofinalrapipedi2-4dc9f.firebaseio.com",
+    "project_id": "proyectofinalrapipedi2-4dc9f",
+    "storage_bucket": "proyectofinalrapipedi2-4dc9f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595076268215:android:f222fda43760ea0bfa8d32",
+        "android_client_info": {
+          "package_name": "com.example.programacion_lll"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595076268215-i6hugocg0khuobmjg33s2iicm222ecsr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.programacion_lll",
+            "certificate_hash": "0b411cfa95fa3f3d029d6864b3f8f3e5d510d7f2"
+          }
+        },
+        {
+          "client_id": "595076268215-dght9go60o4ci9p7kvhp5ma4bf0u65pp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYqQHfMlwl8TjSaQXB7uoRo-NKzvcoBmc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "595076268215-dght9go60o4ci9p7kvhp5ma4bf0u65pp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
