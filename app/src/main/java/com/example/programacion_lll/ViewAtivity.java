@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Region;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.programacion_lll.cxnsqlite.Pedidos;
@@ -51,7 +54,46 @@ public class ViewAtivity extends AppCompatActivity {
         });
 
         ObtenerPedidos();
-        // BuscarPedidos();
+        BuscarPedidos();
+
+    }
+
+    private void BuscarPedidos() {
+        final TextView tempVal = (TextView)findViewById(R.id.edtBuscar);
+        tempVal.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                try {
+                    stringArrayList.clear();
+                    if (tempVal.getText().toString().trim().length() < 1) {
+                        stringArrayList.addAll(copyStringArrayList);
+                    } else {
+                        for (Pedidos am : copyStringArrayList) {
+                            String numeroP = am.getNumero_pedido();
+                            String nombre = am.getNombre_cliente();
+                            String direccion = am.getDirecion();
+                            if (numeroP.toLowerCase().contains(tempVal.getText().toString().trim().toLowerCase()) ||
+                                    nombre.toLowerCase().contains(tempVal.getText().toString().trim().toLowerCase()) ||
+                                    direccion.toLowerCase().contains(tempVal.getText().toString().trim().toLowerCase())) {
+                                stringArrayList.add(am);
+                            }
+                        }
+                    }
+                    AdaptadorImagenes adaptadorImg = new AdaptadorImagenes(getApplicationContext(), stringArrayList);
+                    listPedidos.setAdapter(adaptadorImg);
+                }catch (Exception ex){
+                    Toast.makeText(getApplicationContext(), "Error: "+ ex.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
     }
 

@@ -6,6 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.github.florent37.shapeofview.shapes.ArcView
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                app:shape_arc_cropDirection="outside"
+                app:shape_arc_height="30dp"
+                app:shape_arc_position="bottom">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary1"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,21 +32,26 @@
         android:textSize="45dp"
         android:textColor="#000000"
         android:gravity="center"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="10dp"/>
+
+            </com.github.florent37.shapeofview.shapes.ArcView>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="210dp"
         android:layout_height="210dp"
         android:layout_marginLeft="80dp"
-        android:src="@drawable/logo_two"
+        android:src="@drawable/logo4"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="115dp"
+        app:civ_circle_background_color="#ffffff"
+        app:civ_border_color="@color/colorPrimary1"
+        app:civ_border_width="2dp"
+        android:layout_marginTop="90dp"
         />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="320dp"
         android:hint="email">
 
         <EditText
@@ -46,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="contraseña "
-        android:layout_marginTop="410dp">
+        android:layout_marginTop="390dp">
 
         <EditText
             android:id="@+id/editcontra"
@@ -84,4 +108,8 @@
         android:textSize="20sp"
         android:layout_marginTop="620dp"
         android:layout_centerHorizontal="true"/>
+
+        </RelativeLayout>
+
+        </ScrollView>
 </RelativeLayout>

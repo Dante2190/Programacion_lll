@@ -48,10 +48,12 @@ public class AdaptadorImagenes extends BaseAdapter {
         layoutInflater = (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View itemView = layoutInflater.inflate(R.layout.listview_imaganes, viewGroup, false);
         TextView textView = (TextView)itemView.findViewById(R.id.txtTitulo);
+        TextView textView2 = (TextView)itemView.findViewById(R.id.txtTitulo2);
         ImageView imageView = (ImageView)itemView.findViewById(R.id.img);
         try {
             pedido = datos.get(i);
             textView.setText(pedido.getNumero_pedido());
+            textView2.setText(pedido.getNombre_cliente());
             Bitmap imageBitmap = BitmapFactory.decodeFile(pedido.getUrlImg());
             imageView.setImageBitmap(imageBitmap);
         }catch (Exception ex){ }
