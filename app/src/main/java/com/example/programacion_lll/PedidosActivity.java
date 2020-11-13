@@ -230,13 +230,9 @@ public class PedidosActivity extends AppCompatActivity {
                 mCaptureOrUploadBitmap = bitmap;
 
             } catch (FileNotFoundException e) {
-
                 e.printStackTrace();
-
             }
-
         }
-
     }
 
     private File createImageFile() throws IOException {

@@ -6,14 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".ViewAtivity">
 
-    <EditText
-        android:id="@+id/edtBuscar"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Buscar Pedido"/>
+        android:hint="Buscar Pedido"
+        android:textColorHint="#000000"
+        >
+
+        <EditText
+            android:id="@+id/edtBuscar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
     <ListView
         android:id="@+id/listPedidos"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="55dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
