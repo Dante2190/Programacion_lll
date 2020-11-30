@@ -25,6 +25,9 @@ import android.widget.Toast;
 
 import com.example.programacion_lll.cxnsqlite.Pedidos;
 import com.example.programacion_lll.cxnsqlite.SQLiteDB;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -32,6 +35,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 public class PedidosActivity extends AppCompatActivity {
     private EditText nPedido, edtNombre, edtDireccion, edtPedido;
@@ -54,6 +58,8 @@ public class PedidosActivity extends AppCompatActivity {
     String productImagePath;
 
 
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
 
     private static final int UPLOAD_PICTURE=2;
     @Override
@@ -87,8 +93,44 @@ public class PedidosActivity extends AppCompatActivity {
             }
         });
 
+        IniciarFirebase();
+
         TomarFotoPedidos();
         MostrarDatosPedidos();
+    }
+
+    //firebase
+
+    public void GuardarFirebase(){
+        numero= nPedido.getText().toString();
+        nombre= edtNombre.getText().toString();
+        direccion=  edtDireccion.getText().toString();
+        pedido = edtPedido.getText().toString();
+
+        if (!numero.isEmpty() && !nombre.isEmpty() && !direccion.isEmpty() && !pedido.isEmpty() ) {
+            Pedidos p = new Pedidos();
+            p.setId(UUID.randomUUID().toString());
+            p.setNumero_pedido(numero);
+            p.setNombre_cliente(nombre);
+            p.setDirecion(direccion);
+            p.setPedidos(pedido);
+            p.setUrlImg(productImagePath);
+
+            databaseReference.child("Pedidos").child(p.getId()).setValue(p);
+            // Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+
+
+            //Snackbar snackbar = Snackbar.make(layout,"exito con firebase",Snackbar.LENGTH_LONG);
+            // snackbar.show();
+
+        }else Toast.makeText(PedidosActivity.this, "llene los campos por favor", Toast.LENGTH_SHORT).show();
+
+    }
+    // iniciar firebase
+    private void IniciarFirebase(){
+        FirebaseApp.initializeApp(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
     }
 
     @Override
@@ -107,6 +149,7 @@ public class PedidosActivity extends AppCompatActivity {
                 pedido = edtPedido.getText().toString();
                 if (!numero.isEmpty() && !nombre.isEmpty() && !direccion.isEmpty() && !pedido.isEmpty() ) {
                     GuardarDatosPedidos();
+                    GuardarFirebase();
                     finish();
                 }else Toast.makeText(PedidosActivity.this, "llene los campos por favor", Toast.LENGTH_SHORT).show();
                 return true;

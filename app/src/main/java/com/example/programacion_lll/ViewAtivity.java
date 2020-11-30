@@ -17,6 +17,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,7 +26,16 @@ import android.widget.Toast;
 import com.example.programacion_lll.cxnsqlite.Pedidos;
 import com.example.programacion_lll.cxnsqlite.SQLiteDB;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -32,18 +43,40 @@ public class ViewAtivity extends AppCompatActivity {
     SQLiteDB miBD;
     Cursor misPedidos;
     Pedidos pedidos;
-    ArrayList<Pedidos> stringArrayList = new ArrayList<Pedidos>();
-    ArrayList<Pedidos> copyStringArrayList = new ArrayList<Pedidos>();
-    ListView listPedidos;
+    Pedidos pSelected;
+    String nombre_cliente;
+
+    EditText numPedido, nomCliente, direccion, pedids;
+
+    JSONArray datosJSON; // para guardar los datos que vienen del servidor en formato
+    JSONObject jsonObject;
+    Bundle parametros = new Bundle();
+    int posicion = 0;
+
+
+    // ArrayList<Pedidos> stringArrayList = new ArrayList<Pedidos>();
+    // ArrayList<Pedidos> copyStringArrayList = new ArrayList<Pedidos>();
+
+    private ArrayList<Pedidos> listPedidos = new ArrayList<Pedidos>();
+    ArrayAdapter<Pedidos> arrayAdapterPedidos;
+
+    ListView listaPedidos;
 
     private FirebaseAuth mAuth;
+
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewtivity);
 
-        mAuth = FirebaseAuth.getInstance();
+
+
+        listaPedidos = findViewById(R.id.listPedidos);
+
+
 
         FloatingActionButton btnAgregar = (FloatingActionButton) findViewById(R.id.btnNuevoPedido);
         btnAgregar.setOnClickListener(new View.OnClickListener() {
@@ -53,11 +86,158 @@ public class ViewAtivity extends AppCompatActivity {
             }
         });
 
-        ObtenerPedidos();
-        BuscarPedidos();
+        IniciarFirebase();
+        ListarPedidos();
+        //  ObtenerPedidos();
+        //  BuscarPedidos();
 
+     /*   listaPedidos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // pedidos = (Pedidos) parent.getItemAtPosition(position);
+                try {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("usuario", "Juan Perez");
+                    bundle.putString("to", "12345678");
+
+                    Intent intent = new Intent(getApplicationContext(), PedidosActivity.class);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }catch (Exception ex){
+                    Toast.makeText(getApplicationContext(), "Error al seleccionar el usuario a chatear: "+ ex.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+        });*/
+
+
+
+
+      /*  listaPedidos.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
+            @Override
+            public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+                menu.add("Agregar").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        startActivity(new Intent(ViewAtivity.this, PedidosActivity.class));
+                        return false;
+                    }
+                });
+
+                menu.add("Editar").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+
+                     /*   FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                        DatabaseReference databaseReference1 = firebaseDatabase.getReference("Pedidos");
+                        databaseReference1.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                                for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                                   // Pedidos pedidos = new Pedidos();
+
+                                    String key = dataSnapshot1.getKey();
+                                    Log.d("res1", "onCreate: key :" + key);
+                                    if(pedidos.getId() == key){
+                                        String direccion = dataSnapshot1.child("direccion").getValue(String.class);
+                                        String nombre_cliente =dataSnapshot1.child("numero_cliente").getValue(String.class);
+                                        String numero_pedido = dataSnapshot1.child("numero_pedido").getValue(String.class);
+                                        String pedido = dataSnapshot1.child("Pedidos").getValue(String.class);
+                                        String urlImg = dataSnapshot1.child("urlImg").getValue(String.class);
+                                        // Log.d("res2", "onDataChange: email: " + email);
+                                    }
+
+                                }
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });*/
+
+
+                /*        return false;
+                    }
+                });
+
+                menu.add("Eliminar").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+
+                      /* Query query = databaseReference.orderByChild("nombre_cliente").equalTo(nombre_cliente);
+                        query.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for (DataSnapshot dataSnapshot1 : snapshot.getChildren()){
+                                    dataSnapshot1.getRef().removeValue();
+                                    Toast.makeText(ViewAtivity.this, "exito al eliminar ", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });*/
+                   /*     Pedidos pedidos = new Pedidos();
+                        Query query = databaseReference.child("Pedidos").orderByChild("Pedidos").equalTo((pedidos.getId()));
+                        query.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                for(DataSnapshot objeto : dataSnapshot.getChildren()) {
+                                    objeto.getRef().removeValue();
+                                }
+                                Toast.makeText(ViewAtivity.this, "Se elimino el usuario", Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });*/
+
+
+
+        //      return false;
+        //   }
+        //  });
+        //  }
+        // });*/
     }
 
+    // iniciar firebase
+    private void IniciarFirebase() {
+        FirebaseApp.initializeApp(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
+    }
+
+    private void ListarPedidos() {
+        databaseReference.child("Pedidos").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listPedidos.clear();
+
+                for (DataSnapshot objSnaptshot : snapshot.getChildren()){
+                    Pedidos p = objSnaptshot.getValue(Pedidos.class);
+                    listPedidos.add(p);
+
+                    AdaptadorImagenes adaptadorImg = new AdaptadorImagenes(getApplicationContext(), listPedidos);
+                    listaPedidos.setAdapter(adaptadorImg);
+
+                    // arrayAdapterPedidos = new ArrayAdapter<Pedidos>(ViewAtivity.this, android.R.layout.simple_list_item_1,listPedidos);
+                    // listaPedidos.setAdapter(arrayAdapterPedidos);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    /*
     private void BuscarPedidos() {
         final TextView tempVal = (TextView)findViewById(R.id.edtBuscar);
         tempVal.addTextChangedListener(new TextWatcher() {
@@ -95,9 +275,9 @@ public class ViewAtivity extends AppCompatActivity {
             }
         });
 
-    }
+    }*/
 
-    private void ObtenerPedidos() {
+  /*  private void ObtenerPedidos() {
 
         miBD = new SQLiteDB(getApplicationContext(), "", null, 1);
         misPedidos = miBD.MantenimientoPedidos("consultar", null);
@@ -107,7 +287,7 @@ public class ViewAtivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "No hay registros de amigos que mostrar",Toast.LENGTH_LONG).show();
             AgregarPedidos("nuevo", new String[]{});
         }
-    }
+    }*/
 
     // menu cerrar sesion
     @Override
@@ -141,6 +321,8 @@ public class ViewAtivity extends AppCompatActivity {
         menu.setHeaderTitle(misPedidos.getString(1));
     }
 
+
+
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -161,8 +343,9 @@ public class ViewAtivity extends AppCompatActivity {
                 return true;
 
             case R.id.mnxEliminar:
-                AlertDialog eliminarPedidos = EliminarPedidos();
-                eliminarPedidos.show();
+                //  EliminarPedFire();
+                //   AlertDialog eliminarPedidos = EliminarPedidos();
+                //    eliminarPedidos.show();
                 return true;
 
             default:
@@ -180,7 +363,7 @@ public class ViewAtivity extends AppCompatActivity {
 
     }
 
-    AlertDialog EliminarPedidos(){
+  /*  AlertDialog EliminarPedidos(){
         AlertDialog.Builder confirmacion = new AlertDialog.Builder(ViewAtivity.this);
         confirmacion.setTitle(misPedidos.getString(1));
         confirmacion.setMessage("Esta seguro de eliminar el producto?");
@@ -201,10 +384,10 @@ public class ViewAtivity extends AppCompatActivity {
             }
         });
         return confirmacion.create();
-    }
+    }*/
 
 
-    void mostrarDatosProductos(){
+  /*  void mostrarDatosProductos(){
         stringArrayList.clear();
         listPedidos = (ListView)findViewById(R.id.listPedidos);
         do {
@@ -217,5 +400,11 @@ public class ViewAtivity extends AppCompatActivity {
         copyStringArrayList.clear();
         copyStringArrayList.addAll(stringArrayList);
         registerForContextMenu(listPedidos);
+    }*/
+
+    public void EliminarPedFire(){
+        Pedidos p = new Pedidos();
+        p.setId(p.getId());
+        databaseReference.child("Pedidos").child(p.getId()).removeValue();
     }
 }
