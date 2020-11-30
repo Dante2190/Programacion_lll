@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                 else {
                     progressBar.setVisibility(View.INVISIBLE);
                     textView.setVisibility(View.INVISIBLE);
-                    Toast.makeText(LoginActivity.this, "complete los campos por favor crt", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "complete los campos por favor ", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                     finish();
                 }
                 else {
-                    Toast.makeText(LoginActivity.this, "no se pudo iniciar sesion compruebe bien los datos wey ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "no se pudo iniciar sesion compruebe bien los datos  ", Toast.LENGTH_SHORT).show();
                 }
             }
         });

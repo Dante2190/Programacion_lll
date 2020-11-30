@@ -17,6 +17,10 @@ public class Pedidos {
         this.urlImg = urlImg;
     }
 
+    public Pedidos() {
+
+    }
+
     public String getId() {
         return id;
     }
