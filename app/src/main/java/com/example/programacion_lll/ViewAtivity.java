@@ -23,6 +23,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.programacion_lll.chat.RegisterUserActivity;
 import com.example.programacion_lll.cxnsqlite.Pedidos;
 import com.example.programacion_lll.cxnsqlite.SQLiteDB;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -48,19 +49,12 @@ public class ViewAtivity extends AppCompatActivity {
 
     EditText numPedido, nomCliente, direccion, pedids;
 
-    JSONArray datosJSON; // para guardar los datos que vienen del servidor en formato
-    JSONObject jsonObject;
-    Bundle parametros = new Bundle();
-    int posicion = 0;
+
+    ArrayList<Pedidos> stringArrayList = new ArrayList<Pedidos>();
+    ArrayList<Pedidos> copyStringArrayList = new ArrayList<Pedidos>();
 
 
-    // ArrayList<Pedidos> stringArrayList = new ArrayList<Pedidos>();
-    // ArrayList<Pedidos> copyStringArrayList = new ArrayList<Pedidos>();
-
-    private ArrayList<Pedidos> listPedidos = new ArrayList<Pedidos>();
-    ArrayAdapter<Pedidos> arrayAdapterPedidos;
-
-    ListView listaPedidos;
+    ListView listPedidos;
 
     private FirebaseAuth mAuth;
 
@@ -72,11 +66,7 @@ public class ViewAtivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewtivity);
 
-
-
-        listaPedidos = findViewById(R.id.listPedidos);
-
-
+        //  listaPedidos = findViewById(R.id.listPedidos);
 
         FloatingActionButton btnAgregar = (FloatingActionButton) findViewById(R.id.btnNuevoPedido);
         btnAgregar.setOnClickListener(new View.OnClickListener() {
@@ -87,14 +77,14 @@ public class ViewAtivity extends AppCompatActivity {
         });
 
         IniciarFirebase();
-        ListarPedidos();
-        //  ObtenerPedidos();
-        //  BuscarPedidos();
+        //ListarPedidos();
+        ObtenerPedidos();
+        BuscarPedidos();
 
-     /*   listaPedidos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+       /* listaPedidos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // pedidos = (Pedidos) parent.getItemAtPosition(position);
+               // pedidos = (Pedidos) parent.getItemAtPosition(position);
                 try {
                     Bundle bundle = new Bundle();
                     bundle.putString("usuario", "Juan Perez");
@@ -212,7 +202,7 @@ public class ViewAtivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
     }
 
-    private void ListarPedidos() {
+   /* private void ListarPedidos() {
         databaseReference.child("Pedidos").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -225,8 +215,8 @@ public class ViewAtivity extends AppCompatActivity {
                     AdaptadorImagenes adaptadorImg = new AdaptadorImagenes(getApplicationContext(), listPedidos);
                     listaPedidos.setAdapter(adaptadorImg);
 
-                    // arrayAdapterPedidos = new ArrayAdapter<Pedidos>(ViewAtivity.this, android.R.layout.simple_list_item_1,listPedidos);
-                    // listaPedidos.setAdapter(arrayAdapterPedidos);
+                  // arrayAdapterPedidos = new ArrayAdapter<Pedidos>(ViewAtivity.this, android.R.layout.simple_list_item_1,listPedidos);
+                  // listaPedidos.setAdapter(arrayAdapterPedidos);
                 }
             }
 
@@ -235,9 +225,9 @@ public class ViewAtivity extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
 
-    /*
+
     private void BuscarPedidos() {
         final TextView tempVal = (TextView)findViewById(R.id.edtBuscar);
         tempVal.addTextChangedListener(new TextWatcher() {
@@ -275,9 +265,9 @@ public class ViewAtivity extends AppCompatActivity {
             }
         });
 
-    }*/
+    }
 
-  /*  private void ObtenerPedidos() {
+    private void ObtenerPedidos() {
 
         miBD = new SQLiteDB(getApplicationContext(), "", null, 1);
         misPedidos = miBD.MantenimientoPedidos("consultar", null);
@@ -287,7 +277,7 @@ public class ViewAtivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "No hay registros de amigos que mostrar",Toast.LENGTH_LONG).show();
             AgregarPedidos("nuevo", new String[]{});
         }
-    }*/
+    }
 
     // menu cerrar sesion
     @Override
@@ -304,6 +294,9 @@ public class ViewAtivity extends AppCompatActivity {
                 startActivity(new Intent(ViewAtivity.this, LoginActivity.class));
                 finish();
                 return true;
+            case  R.id.icon_chat:
+                startActivity(new Intent(ViewAtivity.this, RegisterUserActivity.class));
+                break;
         }
         return true;
     }
@@ -320,8 +313,6 @@ public class ViewAtivity extends AppCompatActivity {
         misPedidos.moveToPosition(adapterContextMenuInfo.position);
         menu.setHeaderTitle(misPedidos.getString(1));
     }
-
-
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
@@ -343,9 +334,9 @@ public class ViewAtivity extends AppCompatActivity {
                 return true;
 
             case R.id.mnxEliminar:
-                //  EliminarPedFire();
-                //   AlertDialog eliminarPedidos = EliminarPedidos();
-                //    eliminarPedidos.show();
+                // EliminarPedFire();
+                AlertDialog eliminarPedidos = EliminarPedidos();
+                eliminarPedidos.show();
                 return true;
 
             default:
@@ -363,7 +354,7 @@ public class ViewAtivity extends AppCompatActivity {
 
     }
 
-  /*  AlertDialog EliminarPedidos(){
+    AlertDialog EliminarPedidos(){
         AlertDialog.Builder confirmacion = new AlertDialog.Builder(ViewAtivity.this);
         confirmacion.setTitle(misPedidos.getString(1));
         confirmacion.setMessage("Esta seguro de eliminar el producto?");
@@ -384,10 +375,10 @@ public class ViewAtivity extends AppCompatActivity {
             }
         });
         return confirmacion.create();
-    }*/
+    }
 
 
-  /*  void mostrarDatosProductos(){
+    void mostrarDatosProductos(){
         stringArrayList.clear();
         listPedidos = (ListView)findViewById(R.id.listPedidos);
         do {
@@ -400,7 +391,7 @@ public class ViewAtivity extends AppCompatActivity {
         copyStringArrayList.clear();
         copyStringArrayList.addAll(stringArrayList);
         registerForContextMenu(listPedidos);
-    }*/
+    }
 
     public void EliminarPedFire(){
         Pedidos p = new Pedidos();

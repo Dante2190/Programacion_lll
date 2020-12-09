@@ -148,8 +148,16 @@ public class PedidosActivity extends AppCompatActivity {
                 direccion=  edtDireccion.getText().toString();
                 pedido = edtPedido.getText().toString();
                 if (!numero.isEmpty() && !nombre.isEmpty() && !direccion.isEmpty() && !pedido.isEmpty() ) {
-                    GuardarDatosPedidos();
-                    GuardarFirebase();
+                    Bundle recibirParametros = getIntent().getExtras();
+                    accion = recibirParametros.getString("accion");
+
+                    if (accion.equals("nuevo")){
+                        GuardarDatosPedidos();
+                        GuardarFirebase();
+                    }else if(accion.equals("modificar")){
+
+                        GuardarDatosPedidos();
+                    }
                     finish();
                 }else Toast.makeText(PedidosActivity.this, "llene los campos por favor", Toast.LENGTH_SHORT).show();
                 return true;
